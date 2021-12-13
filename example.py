@@ -11,8 +11,9 @@
 from datetime import datetime, timezone
 from io import BytesIO
 
-from invenio_ocfl.records import FileSystemStorage, OCFLRepository
-from invenio_ocfl.services import (
+from pyocfl import (
+    FileSystemStorage,
+    OCFLRepository,
     OCFLObject,
     OCFLVersion,
     StorageRoot,
