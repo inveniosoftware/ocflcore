@@ -54,8 +54,8 @@ def test_repository_init(tmpdir):
 
 def test_repository_add(tmpdir, repository, minimal_obj):
     repository.add(minimal_obj)
-    assert exists(join(tmpdir, "root/0=ocfl_1.1"))
-    assert exists(join(tmpdir, "root/ocfl_layout.json"))
+    assert exists(join(tmpdir, "root/12345-abcde/inventory.json"))
+    assert exists(join(tmpdir, "root/12345-abcde/v1/content/file.txt"))
 
 
 def test_repository_list_objects(repository, minimal_obj):
