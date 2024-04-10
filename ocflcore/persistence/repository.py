@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2021 CERN.
-# Copyright (C) 2021 Data Futures.
+# Copyright (C) 2021-2024 CERN.
+# Copyright (C) 2021-2024 Data Futures.
 #
 # OCFL Core is free software; you can redistribute it and/or modify it under the
 # terms of the MIT License; see LICENSE file for more details.
@@ -84,7 +84,6 @@ class OCFLRepository:
         # TODO
         pass
 
-    def list(self):
-        """List objects in an OCFL object root."""
-        # TODO
-        pass
+    def list_objects(self):
+        """List objects in an OCFL root."""
+        return self.storage.list_objects()

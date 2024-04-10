@@ -19,6 +19,7 @@ tests_require = [
     "black>=21.12b0",
     "check-manifest>=0.42",
     "coverage>=5.3,<6",
+    "pydocstyle<=6.1.1",
     "pytest-cov>=2.10.1",
     "pytest-isort>=1.2.0",
     "pytest-pycodestyle>=2.2.0",
@@ -28,7 +29,7 @@ tests_require = [
 
 extras_require = {
     "docs": [
-        "Sphinx==4.2.0",
+        "Sphinx>=5.0.0",
     ],
     "tests": tests_require,
 }

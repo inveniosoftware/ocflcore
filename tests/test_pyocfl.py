@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2021 CERN.
-# Copyright (C) 2021 Data Futures.
+# Copyright (C) 2021-2024 CERN.
+# Copyright (C) 2021-2024 Data Futures.
 #
 # OCFL Core is free software; you can redistribute it and/or modify it under the
 # terms of the MIT License; see LICENSE file for more details.
@@ -54,5 +54,11 @@ def test_repository_init(tmpdir):
 
 def test_repository_add(tmpdir, repository, minimal_obj):
     repository.add(minimal_obj)
-    assert exists(join(tmpdir, "root/0=ocfl_1.1"))
-    assert exists(join(tmpdir, "root/ocfl_layout.json"))
+    assert exists(join(tmpdir, "root/12345-abcde/inventory.json"))
+    assert exists(join(tmpdir, "root/12345-abcde/v1/content/file.txt"))
+
+
+def test_repository_list_objects(repository, minimal_obj):
+    repository.add(minimal_obj)
+    objects = repository.list_objects()
+    assert next(objects) == "12345-abcde"

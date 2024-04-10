@@ -25,3 +25,15 @@ class LogicalPathError(ConstraintException):
     """An error related to a logical path."""
 
     pass
+
+
+class ObjectNotFoundError(OCFLException):
+    """Specified object does not exist."""
+
+    pass
+
+
+class OCFLFileNotFoundError(OCFLException):
+    """Specifed file does not exist."""
+
+    pass
