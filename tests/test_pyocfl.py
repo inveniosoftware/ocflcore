@@ -61,4 +61,4 @@ def test_repository_add(tmpdir, repository, minimal_obj):
 def test_repository_list_objects(repository, minimal_obj):
     repository.add(minimal_obj)
     objects = repository.list_objects()
-    assert next(objects) == '12345-abcde'
+    assert next(objects) == "12345-abcde"

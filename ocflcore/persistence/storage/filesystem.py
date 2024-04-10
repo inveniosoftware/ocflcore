@@ -8,9 +8,12 @@
 
 """File system storage implementations for OCFL."""
 import shutil
+from io import BytesIO
 from os import makedirs
 from os.path import basename, dirname, join
 from pathlib import Path
+
+import ocflcore.errors
 
 from .base import Storage
 
@@ -58,11 +61,24 @@ class FileSystemStorage(Storage):
 
     def list_objects(self):
         """Return list of objects in the storage root."""
-        file_path = Path(self._p('.'))
-        for path in file_path.glob('*/'):
+        file_path = Path(self._p("."))
+        for path in file_path.glob("*/"):
             if path.is_dir():
                 yield basename(path)
         # TODO: exclude extensions/ (and others?)
         # TODO: size/pagination
         # TODO: allow wildcard for wanted objects (eg image*)
         # TODO: allow regex for wanted objects (eg r"page-\d+.jpg")
+
+    def read_file(self, path):
+        """Read file and return BytesIO object."""
+        file_path = self._p(path)
+        file_bytes = BytesIO()
+        try:
+            with open(file_path, "rb") as fp:
+                while chunk := fp.read(10 * 1024 * 1024):
+                    file_bytes.write(chunk)
+        except FileNotFoundError:
+            raise ocflcore.errors.OCFLFileNotFoundError()
+        file_bytes.seek(0)
+        return file_bytes
