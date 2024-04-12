@@ -12,6 +12,7 @@ include .tx/config
 include *.py
 include *.rst
 include *.sh
+include *.yaml
 include LICENSE
 include pytest.ini
 prune docs/_build
